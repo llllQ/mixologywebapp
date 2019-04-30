@@ -66,6 +66,7 @@ recognition.onresult = function(event) {
     console.log("!!");
     
     document.getElementById('result').innerHTML = "<div id='drink'><img class='drinkImg' src='"+test.strDrinkThumb+"'><h1>"+test.strDrink+"</h1><div id='ingredients'></div><div id='method'></div></div>";
+    document.getElementById('result').style.display = "block";
     var element = document.getElementById('ingredients');
     if (test.strIngredient1 != ""){
       element.innerHTML += " <li>"+test.strMeasure1+" "+ test.strIngredient1+"</li>";
