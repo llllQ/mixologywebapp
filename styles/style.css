@@ -40,7 +40,38 @@ body{
 
 /* input box styling */
 
+.form-control{
+    background-color: rgba(0,0,0,0);
+    border:0;
+    border-bottom: 4px solid #fff;
+    border-radius: 0px;
+    color: #fff;
+    padding-left: 0;
+}
+
+.form-control::placeholder{
+    color: #fff;
+    text-transform: lowercase;
+}
+
 /* end of input box styling */
+
+#input{
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr 2fr;
+}
+
+#input #searchBar{
+    grid-column: 2;
+}
+
+#input #microphone {
+    background-color: rgba(0,0,0,0);
+    border-color: rgba(0,0,0,0);
+    color: #fff;
+    font-size: 1.4em;
+    grid-column: 3;
+}
 
 
 

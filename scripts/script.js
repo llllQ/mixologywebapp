@@ -74,12 +74,27 @@ recognition.onresult = function(event) {
             const data = JSON.parse(Http.responseText);
             console.log(data);
             test = data.drinks;
-            document.write(test[0].name);
+            document.write(test[0].strDrink);
 
 
 
         }
       }
+      
 
 
   }
+
+  // Get the input field
+var input = document.getElementById("myInput");
+
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function(event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    drinkRequest(input.value)
+  }
+});

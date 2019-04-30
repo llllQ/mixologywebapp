@@ -10,6 +10,9 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <title>Recipes</title>
   </head>
@@ -57,17 +60,14 @@
             <h1>recipes</h1>
             <p>find and learn some new drinks!</p>
     </div>
-
-    
-
-    <form>
             <!-- Search form -->
-<div class="md-form mt-0">
-  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-</div>
-    </form>
-    
-    <button onclick="runSpeech()">speech</button>
+            <div id="input">
+                    <div id="searchBar" class="md-form mt-0">
+                            <input id="myInput" class="form-control" type="text" placeholder="Drink Name" aria-label="Search">
+                          </div>    
+                    <button id="microphone" onclick="runSpeech()"><i class="fas fa-microphone"></i></button>
+            </div>
+
 
 
     <script
