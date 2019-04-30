@@ -6,7 +6,7 @@ var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEv
 var test;
 
 // Defining grammar
-var drinks = [ 'margarita' , 'long island iced tea' , 'pina colada', 'dry martini' , 'cosmopolitan', 'margarita', 'vodka martini' ,'singapore sling', 'canada goose', 'sex on the beach', 'rumball', 'old fashioned', 'negroni'];
+var drinks = [ 'margarita' , 'long island iced tea' , 'pina colada', 'dry martini' , 'cosmopolitan', 'candy cloud', 'vodka martini' ,'singapore sling', 'canada goose', 'sex on the beach', 'rumball', 'old fashioned', 'negroni'];
 var grammar = '#JSGF V1.0; grammar drinks; public <drink> = ' + drinks.join(' | ') + ' ;'
 
 // recongition controls
