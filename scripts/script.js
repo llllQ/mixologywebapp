@@ -3,6 +3,7 @@ var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
+var test;
 
 // Defining grammar
 var drinks = [ 'margarita' , 'long island iced tea' , 'pina colada', 'woo woo', 'singapore sling', 'canada goose', 'sex on the beach', 'rumball', 'old fashioned', 'negroni'];
@@ -70,13 +71,15 @@ recognition.onresult = function(event) {
 
       Http.onreadystatechange = function() {
         if (this.status == 200){
-            const data = Http.responseText;
+            const data = JSON.parse(Http.responseText);
             console.log(data);
+            test = data.drinks;
+            document.write(test[0].name);
+
 
 
         }
-    }
-
+      }
 
 
   }
