@@ -6,7 +6,7 @@ var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEv
 var test;
 
 // Defining grammar
-var drinks = [ 'margarita' , 'long island iced tea' , 'pina colada', 'woo woo', 'singapore sling', 'canada goose', 'sex on the beach', 'rumball', 'old fashioned', 'negroni'];
+var drinks = [ 'margarita' , 'long island iced tea' , 'pina colada', 'dry martini' , 'cosmopolitan', 'margarita', 'vodka martini' ,'singapore sling', 'canada goose', 'sex on the beach', 'rumball', 'old fashioned', 'negroni'];
 var grammar = '#JSGF V1.0; grammar drinks; public <drink> = ' + drinks.join(' | ') + ' ;'
 
 // recongition controls
@@ -60,6 +60,105 @@ recognition.onresult = function(event) {
     console.log('Error occurred in recognition: ' + event.error);
   }
 
+  function writeIngredients(test){
+    console.log("!!");
+    console.log(test);
+    console.log("!!");
+    
+    document.getElementById('result').innerHTML = "<div id='drink'><img class='drinkImg' src='"+test.strDrinkThumb+"'><h1>"+test.strDrink+"</h1><div id='ingredients'></div><div id='method'></div></div>";
+    var element = document.getElementById('ingredients');
+    if (test.strIngredient1 != ""){
+      element.innerHTML += " <li>"+test.strMeasure1+" "+ test.strIngredient1+"</li>";
+    } else{
+      return;
+    }
+    if (test.strIngredient2 != ""){
+       element.innerHTML+= "<li>"+test.strMeasure2+" "+test.strIngredient2+"</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient3 != ""){
+      element.innerHTML += "<li>" +test.strMeasure3+" "+ test.strIngredient3 + "</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient4 != ""){
+      element.innerHTML += "<li>" +test.strMeasure4+" "+ test.strIngredient4 + "</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient5 != ""){
+      element.innerHTML += "<li>" +test.strMeasure5+" "+ test.strIngredient5 + "</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient6 != ""){
+      element.innerHTML += "<li>" +test.strMeasure6+" "+ test.strIngredient6 + "</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient7 != ""){
+      element.innerHTML += "<li>" +test.strMeasure7+" "+ test.strIngredient7 + "</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient8 != ""){
+      element.innerHTML += "<li>" +test.strMeasure8+" "+ test.strIngredient8 + "</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient9 != ""){
+      element.innerHTML += "<li>" +test.strMeasure9+" "+ test.strIngredient9 + "</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient10 != ""){
+      element.innerHTML += "<li>" +test.strMeasure10+" "+ test.strIngredient10 + "</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient11 != ""){
+      element.innerHTML += "<li>" +test.strMeasure11+" "+ test.strIngredient11 + "</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient12 != ""){
+      element.innerHTML += "<li>" +test.strMeasure12+" "+ test.strIngredient12 + "</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient13 != ""){
+      element.innerHTML += "<li>" +test.strMeasure13+" "+ test.strIngredient13 + "</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient14 != ""){
+      element.innerHTML += "<li>" +test.strMeasure14+" "+ test.strIngredient14 + "</li>";
+    }else{
+       
+      return;
+    }
+    if (test.strIngredient15 != ""){
+      element.innerHTML += "<li>" +test.strMeasure15+" "+ test.strIngredient15 + "</li>";
+    }else{
+       
+      return;
+    }
+    
+  }
+
   function drinkRequest(drink){
     const Http = new XMLHttpRequest();
     var parameters = drink;
@@ -73,8 +172,15 @@ recognition.onresult = function(event) {
         if (this.status == 200){
             const data = JSON.parse(Http.responseText);
             console.log(data);
-            test = data.drinks;
-            document.write(test[0].strDrink);
+            tests = data.drinks;
+            writeIngredients(tests[0]);
+            
+            
+            
+            document.querySelector('#result').scrollIntoView({
+              behavior: 'smooth'
+            });
+            // document.write(test[0].strDrink);
 
 
 
