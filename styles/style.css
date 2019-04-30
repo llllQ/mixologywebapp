@@ -1,0 +1,11 @@
+:root{
+    --brand-clr: rgb(0, 217, 255);
+}
+
+html{
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background-color: var(--brand-clr); 
+}
