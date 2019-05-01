@@ -145,7 +145,7 @@ body{
 }
 
 #method li{
-    width: 80%;
+    /* width: 80%; */
     list-style: none;
     text-align: center;
 }
