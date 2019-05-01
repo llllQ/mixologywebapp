@@ -4,9 +4,10 @@ var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList;
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
 var test;
+var thirst;
 
 // Defining grammar
-var drinks = [ 'margarita' , 'long island iced tea' , 'pina colada', 'dry martini' , 'cosmopolitan', 'candy cloud', 'vodka martini' ,'singapore sling', 'canada goose', 'sex on the beach', 'rumball', 'old fashioned', 'negroni'];
+var drinks = [ 'margarita' , 'long island iced tea' , 'pina colada', 'dry martini' , 'cosmopolitan', 'vodka martini' ,'singapore sling', 'canada goose', 'sex on the beach', 'rumball', 'old fashioned', 'negroni'];
 var grammar = '#JSGF V1.0; grammar drinks; public <drink> = ' + drinks.join(' | ') + ' ;'
 
 // recongition controls
@@ -28,6 +29,8 @@ recognition.maxAlternatives = 1;
 //   console.log("SPEAK!");
 //     recognition.start();
 // }
+
+var ingHints = 0;
 
 function runSpeech(){
   console.log("SPEAK!");
@@ -64,9 +67,7 @@ recognition.onresult = function(event) {
     console.log("!!");
     console.log(test);
     console.log("!!");
-    
-    document.getElementById('result').innerHTML = "<div id='drink'><img class='drinkImg' src='"+test.strDrinkThumb+"'><h1>"+test.strDrink+"</h1><div id='ingredients'></div><div id='method'></div></div>";
-    document.getElementById('result').style.display = "block";
+  
     var element = document.getElementById('ingredients');
     if (test.strIngredient1 != ""){
       element.innerHTML += " <li>"+test.strMeasure1+" "+ test.strIngredient1+"</li>";
@@ -154,13 +155,88 @@ recognition.onresult = function(event) {
     if (test.strIngredient15 != ""){
       element.innerHTML += "<li>" +test.strMeasure15+" "+ test.strIngredient15 + "</li>";
     }else{
-       
       return;
     }
     
   }
 
+  function giveHint(hintType){
+    if (hintType == "ingredients"){
+      switch(ingHints){
+        case 0:
+        document.getElementById('hintOutputIng').innerHTML+='<li>There are X Ingredients in This Drink</li>'
+        break;
+        case 1:
+        if (thirst.strIngredient1 != ""){
+          document.getElementById('hintOutputIng').innerHTML='<li>Ingredient 1 is: '+thirst.strMeasure1+" "+ thirst.strIngredient1+'</li>';
+        }
+        else{
+          document.getElementById('hintOutputIng').innerHTML+='<li>And Thats It!</li>';
+          document.getElementById('ingBtn').style.display = "none";
+        }
+        break;
+        case 2:
+        if (thirst.strIngredient2 != ""){
+          document.getElementById('hintOutputIng').innerHTML+='<li>Ingredient 2 is: '+thirst.strMeasure2+" "+ thirst.strIngredient2+'</li>';
+        }
+        else{
+          document.getElementById('hintOutputIng').innerHTML+='<li>And Thats It!</li>';
+          document.getElementById('ingBtn').style.display = "none";
+        }
+        break;
+        case 3:
+        if (thirst.strIngredient3 != ""){
+          document.getElementById('hintOutputIng').innerHTML+='<li>Ingredient 3 is: '+thirst.strMeasure3+" "+ thirst.strIngredient3+'</li>';
+        }
+        else{
+          document.getElementById('hintOutputIng').innerHTML+='<li>And Thats It!</li>';
+          document.getElementById('ingBtn').style.display = "none";
+        }
+        break;
+        case 4:
+        if (thirst.strIngredient4 != ""){
+          document.getElementById('hintOutputIng').innerHTML+='<li>Ingredient 4 is: '+thirst.strMeasure4+" "+ thirst.strIngredient4+'</li>';
+        }
+        else{
+          document.getElementById('hintOutputIng').innerHTML+='<li>And Thats It!</li>';
+          document.getElementById('ingBtn').style.display = "none";
+        }
+        break;
+        case 5:
+        if (thirst.strIngredient5 != ""){
+          document.getElementById('hintOutputIng').innerHTML+='<li>Ingredient 5 is: '+thirst.strMeasure5+" "+ thirst.strIngredient5+'</li>';
+        }
+        else{
+          document.getElementById('hintOutputIng').innerHTML+='<li>And Thats It!</li>';
+          document.getElementById('ingBtn').style.display = "none";
+        }
+        break;
+        case 6:
+        if (thirst.strIngredient6 != ""){
+          document.getElementById('hintOutputIng').innerHTML+='<li>Ingredient 6 is: '+thirst.strMeasure6+" "+ thirst.strIngredient6+'</li>';
+        }
+        else{
+          document.getElementById('hintOutputIng').innerHTML+='<li>And Thats It!</li>';
+          document.getElementById('ingBtn').style.display = "none";
+        }
+        break;
+      }
+      ingHints++;
+    } else{
+      document.getElementById('hintOutputMet').innerHTML = '<li>'+thirst.strInstructions+'</li><li>And Thats It!</li>'
+      document.getElementById('metBtn').style.display = "none";
+    }
+
+  }
+
+  function writeMethod(drink){
+    var element = document.getElementById('method');
+    element.innerHTML += "<p>"+drink.strInstructions+"</p>";
+  }
+
   function drinkRequest(drink){
+    ingHints = 0;
+    methHints = 0;
     const Http = new XMLHttpRequest();
     var parameters = drink;
     const url ="https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + parameters;
@@ -174,7 +250,18 @@ recognition.onresult = function(event) {
             const data = JSON.parse(Http.responseText);
             console.log(data);
             tests = data.drinks;
-            writeIngredients(tests[0]);
+            thirst = tests[0];
+            document.getElementById('result').innerHTML = "<div id='drink'><img class='drinkImg' src='"+tests[0].strDrinkThumb+"'><h1>"+tests[0].strDrink+"</h1><div id='ingredients'><p>In one "+tests[0].strGlass+":</p></div><div id='method'></div></div>";
+            document.getElementById('result').style.display = "block";
+            if (document.getElementById("defaultInline1").checked){
+              writeIngredients(tests[0]);
+              writeMethod(tests[0]);
+            }else{
+              // alert("learn");
+              document.getElementById('ingredients').innerHTML = "<div><h5 class='card-title'>Ingredients</h5><div id='hintOutputIng'></div><button id='ingBtn' type='button' class='btn btn-primary' onclick=giveHint('ingredients')>hint</button></div>";
+              document.getElementById('method').innerHTML ="<div><h5 class='card-title'>Method</h5><div id='hintOutputMet'></div><button id='metBtn' type='button' class='btn btn-primary' onclick=giveHint('method')>hint</button></div>";
+            }
+            
             
             
             

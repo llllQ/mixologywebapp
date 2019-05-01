@@ -90,6 +90,11 @@ body{
     grid-column: 3;
 }
 
+.radioOptions label{
+    color: #fff;
+    font-weight: 400;   
+}
+
 #result #drink{
     display: grid;
     grid-template-rows: 1fr 1fr 2fr 2fr;
@@ -109,13 +114,42 @@ body{
 #drink h1{
     color: #fff;
     font-weight: 800;
+    grid-row: 2;
 }
 
+
+#ingredients{
+    color: #fff;
+    grid-row: 3;
+}
+
+
 #ingredients li{
+    width: 80%;
     list-style: none;
     text-align: center;
 }
 
+#ingredients button{
+    margin-top: 20px;
+}
+
+
+#method{
+    left: calc(50%-45%);
+    color: #fff;
+    grid-row: 4;
+}
+
+#method button{
+    margin-top: 20px;
+}
+
+#method li{
+    width: 80%;
+    list-style: none;
+    text-align: center;
+}
 
 
 
