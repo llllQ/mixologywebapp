@@ -53,6 +53,18 @@ body {
   font-size: 3em;
 }
 
+#drinkPage h1{
+    margin-top: 8%;
+}
+
+.pageTitle #phImg{
+    width: 270px;
+}
+
+.pageTitle #pourImg{
+    width: 270px;
+}
+
 .pageTitle p {
   font-family: roboto;
   color: white;
