@@ -252,7 +252,7 @@ recognition.onresult = function(event) {
             tests = data.drinks;
             thirst = tests[0];
             document.getElementById('result').innerHTML = "<div id='drink'><img class='drinkImg' src='"+tests[0].strDrinkThumb+"'><h1>"+tests[0].strDrink+"</h1><div id='ingredients'><p>In one "+tests[0].strGlass+":</p></div><div id='method'></div></div>";
-            document.getElementById('result').style.display = "block";
+            document.getElementById('container').style.display = "block";
             if (document.getElementById("defaultInline1").checked){
               writeIngredients(tests[0]);
               writeMethod(tests[0]);
@@ -261,11 +261,12 @@ recognition.onresult = function(event) {
               document.getElementById('ingredients').innerHTML = "<div><h5 class='card-title'>Ingredients</h5><div id='hintOutputIng'></div><button id='ingBtn' type='button' class='btn btn-primary' onclick=giveHint('ingredients')>hint</button></div>";
               document.getElementById('method').innerHTML ="<div><h5 class='card-title'>Method</h5><div id='hintOutputMet'></div><button id='metBtn' type='button' class='btn btn-primary' onclick=giveHint('method')>hint</button></div>";
             }
+            document.getElementById('checkDrink').style.display="block";
             
             
             
             
-            document.querySelector('#result').scrollIntoView({
+            document.querySelector('#container').scrollIntoView({
               behavior: 'smooth'
             });
             // document.write(test[0].strDrink);
