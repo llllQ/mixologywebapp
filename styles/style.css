@@ -369,4 +369,8 @@ body {
     position: relative;
     top: 20%;
   }
+
+  .pageTitle h1 {
+    margin-top: 5%;
+  }
 }
