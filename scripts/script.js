@@ -293,3 +293,20 @@ input.addEventListener("keyup", function(event) {
     drinkRequest(input.value)
   }
 });
+
+function callapi(){
+  const Http = new XMLHttpRequest();
+    const url ="http://localhost:5000/api/v1/drinkeval";
+
+    console.log("request url: "+ url);
+    Http.open("GET", url);
+    Http.send();
+
+    Http.onreadystatechange = function() {
+      if (this.status == 200){
+        const data = JSON.parse(Http.responseText);
+        console.log(data);
+      }
+    }
+
+}
