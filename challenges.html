@@ -19,6 +19,7 @@
     />
 
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/coursestyle.css"/>
     <title>Recipes</title>
   </head>
   <body>
@@ -48,12 +49,11 @@
               <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="#"
-                >Recipes <span class="sr-only">(current)</span></a
-              >
+              <a class="nav-link" href="recipe.html"
+                >Recipes</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="challenges.html">Challenges</a>
+              <a class="nav-link" href="#">Challenges <span class="sr-only">(current)</span></a>
             </li>
           </ul>
           <!-- Links -->
@@ -61,63 +61,34 @@
         <!-- Collapsible content -->
       </nav>
       <!--/.Navbar-->
-
+      <section id="select">
       <div class="pageTitle">
-        <h1>recipes</h1>
-        <p>find and learn some new drinks!</p>
+        <h1>Challenges</h1>
+        <p>find and select some learning courses</p>
       </div>
-      <!-- Search form -->
-      <div id="input">
-        <div id="searchBar" class="md-form mt-0">
-          <input
-            id="myInput"
-            class="form-control"
-            type="text"
-            placeholder="Drink Name"
-            aria-label="Search"
-          />
-        </div>
-        <button id="microphone" onclick="runSpeech()">
-          <i class="fas fa-microphone"></i>
-        </button>
-      </div>
-      <div class="radioOptions">
-        <!-- Default inline 1-->
-        <div class="custom-control custom-radio custom-control-inline">
-          <input
-            type="radio"
-            class="custom-control-input"
-            id="defaultInline1"
-            name="inlineDefaultRadiosExample"
-            checked
-          />
-          <label class="custom-control-label" for="defaultInline1">Find</label>
-        </div>
 
-        <!-- Default inline 2-->
-        <div class="custom-control custom-radio custom-control-inline">
-          <input
-            type="radio"
-            class="custom-control-input"
-            id="defaultInline2"
-            name="inlineDefaultRadiosExample"
-          />
-          <label class="custom-control-label" for="defaultInline2">Learn</label>
-        </div>
+      <div class="courseList">
+        <ul>
+            <li class="title">
+                <h3>Courses:</h3>
+            </li>
+            <li class="course-item">
+                <a class="unselectable" href="#">Basic Mixology Course</a>
+            </li>
+            <li class="course-item">
+                <a class="" onclick="displayFridays()">TGI Fridays Certification Course</a>
+            </li>
+        </ul>
       </div>
-      
     </section>
 
-   
-    <section id="container"> 
-    <section id="result">
-      
-    </section>
-    <a id="checkDrink" href="drink.html">Test My Drink!</a>
-  </section>
-    
+    <section id="fridays">
+        <img src="resources/fricert.png">
 
-    <script
+    </section>
+
+
+      <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"

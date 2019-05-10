@@ -1,0 +1,56 @@
+.courseList{
+    position: relative;
+    left: calc(50% - 45%);
+    text-align: center;
+    color: rgb(0, 70, 121);
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    min-height: 40%;
+    padding-bottom: 20px;
+    padding-top: 5px;
+
+}
+
+.courseList ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.courseList a{
+    cursor: pointer;
+    color: rgb(0, 70, 121);
+    text-decoration: none;
+}
+
+.courseList h3{
+    padding-bottom: 20px;
+}
+
+.course-item .unselectable{
+    color: rgb(83, 83, 83);
+    cursor: not-allowed;
+}
+
+#fridays{
+    display: none;
+}
+
+#fridays img{
+    position: relative;
+    width: 100vw;
+    height: 89vh;
+}
+
+
+@media only screen and (min-width: 1000px){
+    .courseList{
+        width: 26%;
+        left: calc(50% - 13%);
+    }
+
+    #fridays img{
+        width: 30%;
+    }
+  }
